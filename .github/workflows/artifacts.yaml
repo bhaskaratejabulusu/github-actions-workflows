@@ -14,6 +14,7 @@ jobs:
               with:
                 name: sample-artifact
                 path: artifact.txt
+                retention-days: 1
         
     download-artifact:
         runs-on: ubuntu-latest
