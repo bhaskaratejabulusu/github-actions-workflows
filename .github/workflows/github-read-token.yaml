@@ -24,6 +24,7 @@ jobs:
                 echo "This is a new file created by the workflow" > new-file.txt
                 git config --global user.name "github-actions"
                 git config --global user.email "github-actions@gmail.com"
+                git checkout master
                 git add new-file.txt
                 git commit -m "Add new file"
-                git push
+                git push origin master
