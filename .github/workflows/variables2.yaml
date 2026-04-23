@@ -1,0 +1,24 @@
+name: Input and Output variables in github actions
+on: 
+    workflow_dispatch:
+        inputs:
+            username: 
+                description: "Enter your name"
+                required: true
+                default: "Guest"
+            
+        
+
+jobs:
+    demo:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Generate greeting
+              id: greeting_step
+              run: |
+                NAME="${{ github.event.inputs.username }}"
+                echo "message=hello $NAME" >> $GITHUB_OUTPUT
+
+            - name: Print greeting
+              run: echo "${{ steps.greeting_step.outputs.message }}"
