@@ -7,7 +7,12 @@ jobs:
         steps: 
             - uses: actions/checkout@v4
 
-           
+            - name: cache node modules
+              uses: actions/cache@v4
+              with: 
+                path: ~/.npm
+                key: npm-${{ hashFiles('**/package-lock.json') }}
+                restore-keys: npm-
 
             - name: Install dependencies
               run: npm install
