@@ -1,0 +1,44 @@
+name: Input and output variables
+on:
+    workflow_dispatch:
+        inputs:
+            environment:
+                description: "Choose environment"
+                required: true
+                default: "Dev"
+
+jobs:
+    # Read the environment variable and store as output
+    setup:
+        runs-on: ubuntu-latest
+        outputs:
+            env: "${{ steps.set_env.outputs.env }}"
+
+        steps:
+            - name: "Capture environment"
+              id: set_env
+              run: |
+                  ENV="${{ github.event.inputs.environment }}"
+                  echo "env=$ENV" >> $GITHUB_OUTPUT
+
+    # Job 1 : only run in dev
+    dev_job:
+        runs-on: ubuntu-latest
+        needs: setup
+        if: ${{ needs.setup.outputs.env == 'Dev' }}
+
+        steps:
+            - name: Dev step
+              run: echo "This runs only in ${{ needs.setup.outputs.env }}"
+    
+    # Job 2: only run in prod
+    prod_job:
+        runs-on: ubuntu-latest
+        needs: setup
+        if: ${{ needs.setup.outputs.env == 'Prod' }}
+        
+        steps:
+            - name: Prod step
+              run: echo "This runs only in ${{ needs.setup.outputs.env }}"
+
+              
