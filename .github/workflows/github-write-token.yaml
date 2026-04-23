@@ -1,0 +1,30 @@
+name: Github tokens with read and write access
+on: 
+    workflow_dispatch:
+permissions:
+    contents: write
+jobs:
+    read-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v3
+
+            - name: List all repo files
+              run: ls -la
+
+    write-test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout repository
+              uses: actions/checkout@v3
+
+            - name: Create a new file and push to the repository
+              run: |
+                echo "This is a new file created by the workflow" > new-file.txt
+                git config --global user.name "github-actions"
+                git config --global user.email "github-actions@gmail.com"
+                git checkout master
+                git add new-file.txt
+                git commit -m "Add new file"
+                git push origin master
