@@ -1,0 +1,17 @@
+name: Input Output Demo
+on: workflow_dispatch
+
+jobs:
+    demo:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Step 1: simulate input + create output
+            - name: Generate greeting
+              id: generate_step
+              run: |
+                NAME="Teja"
+                echo "message=Hello $NAME" >> $GITHUB_OUTPUT
+            
+            - name: Print greeting
+              run: echo "${{ steps.generate_step.outputs.message }}"
