@@ -2,10 +2,10 @@ name: Input and Output variables in github actions
 on: 
     workflow_dispatch:
         inputs:
-            username: 
-                description: "Enter your name"
+            environment: 
+                description: "Enter environment"
                 required: true
-                default: "Guest"
+                default: "Dev"
             
         
 
@@ -14,11 +14,11 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
-            - name: Generate greeting
-              id: greeting_step
+            - name: Generate environment
+              id: environment_step
               run: |
-                NAME="${{ github.event.inputs.username }}"
-                echo "message=hello $NAME" >> $GITHUB_OUTPUT
+                ENVIRONMENT="${{ github.event.inputs.environment }}"
+                echo "message=running in $ENVIRONMENT" >> $GITHUB_OUTPUT
 
-            - name: Print greeting
-              run: echo "${{ steps.greeting_step.outputs.message }}"
+            - name: Print environment
+              run: echo "${{ steps.environment_step.outputs.message }}"
