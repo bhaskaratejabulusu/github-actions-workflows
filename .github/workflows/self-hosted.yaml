@@ -1,0 +1,10 @@
+name: Self hosted runner demo
+on:
+    workflow_dispatch:
+
+jobs:
+    self-runner-job:
+        runs-on: self-hosted
+        steps:
+            - name: Print a message from self hosted runner
+              run: echo "Hi from self hosted"
