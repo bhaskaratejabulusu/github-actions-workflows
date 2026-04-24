@@ -1,0 +1,23 @@
+name: Concurrency in github actions real scenario 
+on: push
+jobs:
+    master-deploy:
+        if: github.ref_name == 'master'
+        runs-on: ubuntu-latest
+        concurrency:
+            group: master-deploy
+            cancel-in-progress: true
+
+        steps:
+            - name: Wait for 40 seconds
+              run: sleep 40
+
+    concurrency-test-deploy:
+        if: github.ref_name == 'concurrency-test'
+        runs-on: ubuntu-latest
+        concurrency:
+            group: concurrency-test-deploy
+            cancel-in-progress: false
+        steps:
+            - name: Wait for 40 seconds
+              run: sleep 40
