@@ -1,11 +1,13 @@
 name: Concurrency in github actions
 on: push
 
-concurrency: 
+# cancel-in-progress: false # default value, if set to false, the new run will be added to the queue and will run after the current run is finished
+# cancel-in-progress: true # if set to true, the new run will cancel the current run and only the latest run will be executed.
+concurrency:
     group: demo
-    cancel-in-progress: true
+    cancel-in-progress: false
 
-jobs: 
+jobs:
     test:
         runs-on: ubuntu-latest
         steps:
@@ -17,5 +19,3 @@ jobs:
 
             - name: End
               run: echo "Finished run"
-
-              
