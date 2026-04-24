@@ -1,6 +1,7 @@
 name: Matrix - parallel execution demo
 on:
-    workflow_dispatch:
+    push:
+        branches: [ master ]
 jobs:
     test:
         if: github.ref == 'master'
