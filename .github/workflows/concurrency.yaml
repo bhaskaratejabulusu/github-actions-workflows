@@ -1,0 +1,19 @@
+name: Concurrency in github actions
+on: push
+
+concurrency: 
+    group: demo
+    cancel-in-progress: true
+
+jobs: 
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Start
+              run: echo "started run"
+
+            - name: Sleep
+              run: sleep 60
+
+            - name: End
+              run: echo "Finished run"
