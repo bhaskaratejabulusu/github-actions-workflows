@@ -4,7 +4,7 @@ on:
         branches: [ master ]
 jobs:
     test:
-        if: github.ref == 'master'
+        if: github.ref_name == 'master'
         runs-on: ubuntu-latest
         strategy:
             matrix: 
@@ -24,4 +24,3 @@ jobs:
             
             - name: Print node version
               run: node -v
-              
