@@ -1,10 +1,10 @@
 name: Matrix - parallel execution demo
 on:
     push:
-        branches: [ master ]
+        branches: [ test ]
 jobs:
     test:
-        if: github.ref_name == 'master'
+        if: github.ref_name == 'test'
         runs-on: ubuntu-latest
         strategy:
             matrix: 
