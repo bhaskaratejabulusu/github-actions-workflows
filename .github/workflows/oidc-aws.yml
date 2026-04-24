@@ -1,0 +1,25 @@
+name: OIDC AWS
+on: 
+    workflow_dispatch
+permissions:
+    id-token: write
+    contents: read
+jobs:
+    aws-test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Configure AWS Account
+              uses: aws-actions/configure-aws-credentials@v4
+              with:
+                role-to-assume: arn:aws:iam::544853490706:role/GitHubActionsS3Role
+                aws-region: us-east-1
+            
+            - name: list s3 buckets
+              run: aws s3 ls
+
+            - name: verify OIDC token
+              run: aws sts get-caller-identity
