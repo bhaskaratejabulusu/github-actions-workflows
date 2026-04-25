@@ -11,7 +11,12 @@ jobs:
               uses: actions/checkout@v4
             
             - name: Wish me
+              id: wish
               uses: ./.github/workflows/composite-action
               with:
                 name: "Bhaskara Teja"
+
+            - name: Check output
+              run: echo "The status of the action is ${{ steps.wish.outputs.status }}"
+              
         
