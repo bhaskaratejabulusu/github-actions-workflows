@@ -10,13 +10,13 @@ jobs:
             - name: checkout action
               uses: actions/checkout@v4
             
-            - name: Wish me
-              id: wish
+            - name: Print course
+              id: course
               uses: ./.github/workflows/composite-action
               with:
-                name: "Bhaskara Teja"
+                name: "Cyber security"
 
             - name: Check output
-              run: echo "The status of the action is ${{ steps.wish.outputs.status }}"
+              run: echo "The status of the action is ${{ steps.course.outputs.status }}"
               
         

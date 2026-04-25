@@ -1,28 +1,23 @@
-name: Composite action example
-description: An example of a composite action that runs multiple steps.
+name: Composite action demo
+description: A composite action to wish someone
 
 inputs:
-    name:
-        description: Enter your name
+    course:
+        description: Enter course name
         required: true
-        default: John Doe
+        default: "DevOps"
 
 outputs:
     status:
-        description: The status of the action
-        value: ${{ steps.wish.outputs.status }}
-    
+        description: get the status of the run
+        value: ${{ steps.course.outputs.status }}
+
 runs:
-    using: composite
-    steps:
-      - name: Wish me
-        id: wish
-        shell: bash
-        run: |
-            echo "Hello ${{ inputs.name }}"
-            echo "status=success" >> $GITHUB_OUTPUT
-
-
-
-
-          
+  using: composite
+  steps:
+    - name: print course
+      id: course
+      shell: bash
+      run: |
+        echo "I am learning ${{ inputs.course }}"
+        echo "status=success" >> $GITHUB_OUTPUT
