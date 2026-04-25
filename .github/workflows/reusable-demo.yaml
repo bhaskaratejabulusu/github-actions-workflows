@@ -7,3 +7,5 @@ jobs:
         uses: ./.github/workflows/reusable-workflow.yaml
         with: 
             node-version: 17
+        secrets:
+            SAMPLE_SECRET: ${{ secrets.SAMPLE_SECRET }}
