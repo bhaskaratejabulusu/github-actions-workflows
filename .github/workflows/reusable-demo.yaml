@@ -1,0 +1,9 @@
+name: Usage of reusable workflow
+on:
+    workflow_dispatch:
+
+jobs: 
+    call-build:
+        uses: ./.github/workflows/reusable-workflow.yaml
+        with: 
+            node-version: 17
