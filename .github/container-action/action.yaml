@@ -1,0 +1,20 @@
+name: Container action
+description: Container action in github actions
+inputs:
+  name:
+    description: 'Name to greet'
+    required: true
+
+outputs:
+  greeting:
+    description: 'The greeting message'
+
+runs:
+  using: docker
+  # 'docker://image:tag' uses pre-built image, 'Dockerfile' builds locally
+  image: Dockerfile
+  env:
+    NAME: ${{ inputs.name }}
+  # entrypoint: "python"
+  # args:
+  #   - "script.py"

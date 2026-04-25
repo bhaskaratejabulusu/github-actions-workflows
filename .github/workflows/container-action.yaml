@@ -1,0 +1,19 @@
+name: Container Action Workflow
+on:
+    workflow_dispatch:
+      
+jobs:
+    test:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout 
+              uses: actions/checkout@v4
+            - name: call container action
+              id: greet-container
+              uses: ./.github/container-action
+              with:
+                name: "Bhaskara Teja"
+
+            - name: print output
+              run: |
+                echo "Greeting message: ${{ steps.greet-container.outputs.greeting }}"
