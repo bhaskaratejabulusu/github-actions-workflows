@@ -1,0 +1,16 @@
+name: Weather Action using JS Action
+description: A simple GitHub Action to fetch weather information using JavaScript.
+inputs:
+    city:
+      description: City name to fetch weather
+      default: Kakinada
+      required: true
+
+outputs:
+  weather:
+    description: 'Citys weather'
+
+runs:
+  using: node20
+  main: dist/index.js
+  

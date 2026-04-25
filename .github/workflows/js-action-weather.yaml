@@ -1,0 +1,21 @@
+name: Javascript action to fetch weather API
+on:
+    workflow_dispatch:
+      
+jobs:
+    fetch:
+        runs-on: ubuntu-latest
+    
+        steps:
+            - name: checkout 
+              uses: actions/checkout@v4
+
+            - name: Run javascript weather action
+              id: js-weather
+              uses: ./.github/workflows/js-action-weather
+              with:
+                city: "Chennai"
+            
+            - name: Print weather output
+              run: |
+                echo "Weather report: ${{ steps.js-weather.outputs.weather }}"
