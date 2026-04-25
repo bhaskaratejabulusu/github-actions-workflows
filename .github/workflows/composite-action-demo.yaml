@@ -1,0 +1,14 @@
+name: Composite action demo
+on:
+    workflow_dispatch:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Wish me
+              uses: ./.github/workflows/composite-action
+              with:
+                name: "Bhaskara Teja"
+        
