@@ -12,7 +12,7 @@ jobs:
 
             - name: Run javascript weather action
               id: js-weather
-              uses: ./.github/workflows/js-action-weather
+              uses: ./.github/js-action-weather
               with:
                 city: "Chennai"
             
