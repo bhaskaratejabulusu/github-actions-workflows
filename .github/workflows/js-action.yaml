@@ -1,0 +1,21 @@
+name: SSimple Javascript action 
+on: 
+    workflow_dispatch:
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4
+
+            - name: Run JavaScript Action
+              uses: ./.github/js-action-1
+              id: js-action
+              with:
+                name: "Teja"
+            
+            - name: Output Greeting Message
+              run: |
+                echo "Greeting Message: ${{ steps.js-action.outputs.message }}"

@@ -1,0 +1,16 @@
+name: Greeting Action
+description: A simple JavaScript action that greets the user.
+
+inputs:
+    name:
+        description: Name to be entered by user
+        default: "Teja"
+        required: true
+
+outputs:
+    message:
+        description: "Greeting message"
+
+runs:
+  using: node20
+  main: index.js
