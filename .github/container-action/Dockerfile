@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY script.py .
 
-ENTRYPOINT [ "python", "script.py" ]
+ENTRYPOINT [ "python", "/app/script.py" ]
