@@ -1,4 +1,4 @@
-name: SSimple Javascript action 
+name: Simple Javascript action 
 on: 
     workflow_dispatch:
 
