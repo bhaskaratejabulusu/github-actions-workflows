@@ -14,7 +14,7 @@ jobs:
               id: course
               uses: ./.github/workflows/composite-action
               with:
-                name: "Cyber security"
+                course: "Cyber security"
 
             - name: Check output
               run: echo "The status of the action is ${{ steps.course.outputs.status }}"
